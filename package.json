@@ -1,0 +1,20 @@
+{
+  "name": "signet-registrar",
+  "version": "1.0.0",
+  "description": "Type registry for Signet types",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha ./test/*.test.js"
+  },
+  "keywords": [
+    "types",
+    "signet",
+    "type-provisioning"
+  ],
+  "author": "Chris Stead <cmstead@gmail.com> (http://www.chrisstead.com/)",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
+}
