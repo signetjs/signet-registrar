@@ -1,4 +1,4 @@
-var registrar = (function () {
+var signetRegistrar = (function () {
     'use strict';
 
     return function() {
@@ -24,6 +24,8 @@ var registrar = (function () {
             }
         }
 
+        // Core registry code
+
         var registry = {};
 
         function get (name) {
@@ -40,10 +42,10 @@ var registrar = (function () {
             get: get,
             set: set
         };
-    }
+    };
 
 })();
 
 if(typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = registrar;
+    module.exports = signetRegistrar;
 }
