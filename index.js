@@ -7,7 +7,7 @@ var signetRegistrar = (function () {
         }
 
         function isValidTypeName (value) {
-            return isTypeOf('string', value) && value.match(/^[^\(\)\<\>\;\=\,\s]+$/) !== null;
+            return isTypeOf('string', value) && value.match(/^[^\(\)\<\>\[\]\:\;\=\,\s]+$/) !== null;
         }
 
         function throwOnBadType (name, predicate) {
