@@ -31,7 +31,7 @@ var signetRegistrar = (function () {
         function get(name) {
             var predicate = registry[name];
             if (typeof predicate === 'undefined') {
-                throw new Error('The givent type "' + name + '" does not exist');
+                throw new Error('The given type "' + name + '" does not exist');
             }
             return predicate;
         }

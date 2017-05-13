@@ -73,10 +73,10 @@ describe('registry', function () {
            assert.equal(type1Predicate, predicate);
         });
 
-        it.only('should throw a meaningful error if key has not been registered', function () {
+        it('should throw a meaningful error if key has not been registered', function () {
            var errorCall = registry.get.bind(null, 'badKey', null);
 
-           assert.throw(errorCall, /The givent type "badKey" does not exist/); 
+           assert.throw(errorCall, /The given type "badKey" does not exist/); 
         });
     });
 });
