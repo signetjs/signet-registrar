@@ -1,17 +1,17 @@
 var signetRegistrar = (function () {
     'use strict';
 
-    return function() {
-        function isTypeOf (type, value) {
+    return function () {
+        function isTypeOf(type, value) {
             return typeof value === type;
         }
 
-        function isValidTypeName (value) {
+        function isValidTypeName(value) {
             return isTypeOf('string', value) && value.match(/^[^\(\)\<\>\[\]\:\;\=\,\s]+$/) !== null;
         }
 
-        function throwOnBadType (name, predicate) {
-            if(!isValidTypeName(name)){
+        function throwOnBadType(name, predicate) {
+            if (!isValidTypeName(name)) {
                 throw new Error('Invalid type name: ' + name);
             }
 
@@ -28,11 +28,15 @@ var signetRegistrar = (function () {
 
         var registry = {};
 
-        function get (name) {
-            return registry[name];
+        function get(name) {
+            var predicate = registry[name];
+            if (typeof predicate === 'undefined') {
+                throw new Error('The given type "' + name + '" does not exist');
+            }
+            return predicate;
         }
 
-        function set (name, predicate){
+        function set(name, predicate) {
             throwOnBadType(name, predicate);
 
             registry[name] = predicate;
@@ -46,6 +50,6 @@ var signetRegistrar = (function () {
 
 })();
 
-if(typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = signetRegistrar;
 }

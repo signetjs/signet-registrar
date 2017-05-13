@@ -53,4 +53,30 @@ describe('registry', function () {
 
     });
 
+    describe('get', function () {
+        const type1 = 'type1';
+
+        var type1Predicate = function (value) {
+                return value === type1;
+            };
+
+        var registry;
+
+        beforeEach(function () {
+            registry = registrar();
+            registry.set(type1, type1Predicate);
+        });
+
+        it('should recieve a valid entry', function () {
+           var predicate = registry.get(type1);
+
+           assert.equal(type1Predicate, predicate);
+        });
+
+        it('should throw a meaningful error if key has not been registered', function () {
+           var errorCall = registry.get.bind(null, 'badKey', null);
+
+           assert.throw(errorCall, /The given type "badKey" does not exist/); 
+        });
+    });
 });
